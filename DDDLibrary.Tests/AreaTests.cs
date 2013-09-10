@@ -283,5 +283,49 @@ namespace DDDLibrary.Tests
 
             Assert.AreEqual(expected, area / 50);
         }
+
+        [TestMethod]
+        public void MustBePossibleCompareIfAnAreaIsGreaterOrEqualOtherArea()
+        {
+            var area = Area.FromSquareMeters(100);
+            var area2 = Area.FromSquareMeters(50);
+            var area3 = Area.FromSquareMeters(100);
+
+            Assert.IsTrue(area >= area2);
+            Assert.IsTrue(area >= area3);
+            Assert.IsFalse(area2 >= area3);
+        }
+
+        [TestMethod]
+        public void MustBePossibleCompareIfAnAreaIsLessThanOrEqualOtherArea()
+        {
+            var area = Area.FromSquareMeters(50);
+            var area2 = Area.FromSquareMeters(50);
+            var area3 = Area.FromSquareMeters(100);
+
+            Assert.IsTrue(area <= area2);
+            Assert.IsTrue(area <= area3);
+            Assert.IsFalse(area3 <= area2);
+        }
+
+        [TestMethod]
+        public void MustBePossibleCompareIfAnAreaIsGreaterThanOtherArea()
+        {
+            var area = Area.FromSquareMeters(100);
+            var area2 = Area.FromSquareMeters(50);
+
+            Assert.IsTrue(area > area2);
+            Assert.IsFalse(area2 > area);
+        }
+
+        [TestMethod]
+        public void MustBePossibleCompareIfAnAreaIsLessThanOtherArea()
+        {
+            var area = Area.FromSquareMeters(50);
+            var area2 = Area.FromSquareMeters(100);
+
+            Assert.IsTrue(area < area2);
+            Assert.IsFalse(area2 < area);
+        }
     }
 }

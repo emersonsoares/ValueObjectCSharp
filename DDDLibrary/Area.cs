@@ -80,20 +80,11 @@ namespace DDDLibrary
             return _squareMeters.GetHashCode();
         }
 
-        public static bool operator ==(Area left, Area right)
-        {
-            return Equals(left, null) ? (Equals(right, null)) : left.Equals(right);
-        }
-
-        public static bool operator !=(Area left, Area right)
-        {
-            return !(left == right);
-        }
-
         public static Area operator +(Area area1, Area area2)
         {
             return FromSquareMeters(area1.InSquareMeters() + area2.InSquareMeters());
         }
+
         public static Area operator +(Area area, decimal squareMeters)
         {
             return FromSquareMeters(area.InSquareMeters() + squareMeters);
@@ -127,6 +118,36 @@ namespace DDDLibrary
         public static Area operator /(Area area, decimal divider)
         {
             return FromSquareMeters(area.InSquareMeters() / divider);
+        }
+
+        public static bool operator ==(Area left, Area right)
+        {
+            return Equals(left, null) ? (Equals(right, null)) : left.Equals(right);
+        }
+
+        public static bool operator !=(Area left, Area right)
+        {
+            return !(left == right);
+        }
+
+        public static bool operator >=(Area area, Area area2)
+        {
+            return area.InSquareMeters() >= area2.InSquareMeters();
+        }
+
+        public static bool operator <=(Area area, Area area2)
+        {
+            return area.InSquareMeters() <= area2.InSquareMeters();
+        }
+
+        public static bool operator >(Area area, Area area2)
+        {
+            return area.InSquareMeters() > area2.InSquareMeters();
+        }
+
+        public static bool operator <(Area area, Area area2)
+        {
+            return area.InSquareMeters() < area2.InSquareMeters();
         }
 
         public decimal InSquareMeters()
